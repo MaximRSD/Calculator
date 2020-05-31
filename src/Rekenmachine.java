@@ -16,10 +16,10 @@ public class Rekenmachine {
 	String strNum1 = "";
 	String strNum2 = "";
 	String[] statement;
-	int num1 = 0;
-	int num2 = 0;
+	double num1 = 0;
+	double num2 = 0;
 	String strTotal;
-	int totalVal = 0;
+	double totalVal = 0;
 	
 	private JButton btnEqual = new JButton("=");
 	
@@ -33,6 +33,7 @@ public class Rekenmachine {
 	private JButton btn7 = new JButton("7");
 	private JButton btn8 = new JButton("8");
 	private JButton btn9 = new JButton("9");
+	private JButton btn10 = new JButton(".");
 	
 	private JButton btnDelen = new JButton("/");
 	private JButton btnKeer = new JButton("*");
@@ -145,6 +146,15 @@ public class Rekenmachine {
 			}
 		});
 		
+		btn10.setSize(50, 25);
+		btn10.setLocation(165, 420);
+		btn10.setBackground(Color.white);
+		btn10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtScreen.append(".");
+			}
+		});
+		
 		btnDelen.setSize(70, 60);
 		btnDelen.setLocation(290, 130);
 		btnDelen.setBackground(Color.white);
@@ -190,40 +200,40 @@ public class Rekenmachine {
 					statement = txtScreen.getText().split("\\+");
 					strNum1 = statement[0];
 					strNum2 = statement[1];				
-					num1 = Integer.parseInt(strNum1);
-					num2 = Integer.parseInt(strNum2);				
+					num1 = Double.parseDouble(strNum1);
+					num2 = Double.parseDouble(strNum2);				
 					totalVal = num1 + num2 ;				
-					strTotal = Integer.toString(totalVal);				
+					strTotal = Double.toString(totalVal);				
 					txtScreen.setText(strTotal);
 				}
 				else if(txtScreen.getText().contains("-")) {
 					statement = txtScreen.getText().split("\\-");
 					strNum1 = statement[0];
 					strNum2 = statement[1];
-					num1 = Integer.parseInt(strNum1);
-					num2 = Integer.parseInt(strNum2);
+					num1 = Double.parseDouble(strNum1);
+					num2 = Double.parseDouble(strNum2);
 					totalVal = num1 - num2;
-					strTotal = Integer.toString(totalVal);
+					strTotal = Double.toString(totalVal);
 					txtScreen.setText(strTotal);
 				}
 				else if(txtScreen.getText().contains("/")) {
 					statement = txtScreen.getText().split("\\/");
 					strNum1 = statement[0];
 					strNum2 = statement[1];
-					num1 = Integer.parseInt(strNum1);
-					num2 = Integer.parseInt(strNum2);
+					num1 = Double.parseDouble(strNum1);
+					num2 = Double.parseDouble(strNum2);
 					totalVal = num1 / num2;
-					strTotal = Integer.toString(totalVal);
+					strTotal = Double.toString(totalVal);
 					txtScreen.setText(strTotal);
 				}
 				else if(txtScreen.getText().contains("*")) {
 					statement = txtScreen.getText().split("\\*");
 					strNum1 = statement[0];
 					strNum2 = statement[1];
-					num1 = Integer.parseInt(strNum1);
-					num2 = Integer.parseInt(strNum2);
+					num1 = Double.parseDouble(strNum1);
+					num2 = Double.parseDouble(strNum2);
 					totalVal = num1 * num2;
-					strTotal = Integer.toString(totalVal);
+					strTotal = Double.toString(totalVal);
 					txtScreen.setText(strTotal);
 				}
 			}
@@ -249,6 +259,7 @@ public class Rekenmachine {
 		frame.add(btn7);
 		frame.add(btn8);
 		frame.add(btn9);
+		frame.add(btn10);
 		
 		frame.add(btnDelen);
 		frame.add(btnKeer);
